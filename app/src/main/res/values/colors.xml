@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-->>>>>>>>>>>>>>> Light base colors <<<<<<<<<<<<<<<-->
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F3F4F6</color>
+    <color name="colorAccent">#0280FF</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#424343</color>
+    <color name="windowColor">#FFFFFF</color>
+    <color name="tabSelectedColor">#0280FF</color>
+    <color name="tabUnselectedColor">#424343</color>
+    <color name="navTabPressed">#000</color>
+    <color name="statusBarColor">#F3F4F6</color>
+    <color name="appBarColor">#F3F4F6</color>
+    <color name="backgroundColor">#FAFAFA</color>
+    <color name="cardDialogColor">#FFFFFF</color>
+    <color name="toastSnackBarColor">#212121</color>
+
+    <!-->>>>>>>>>>>>>>> Dark base colors <<<<<<<<<<<<<<<-->
+    <color name="colorPrimary_night">#000000</color> <!-- #121212 -->
+    <color name="colorPrimaryDark_night">#212121</color> <!-- #1F1F1F -->
+    <color name="colorAccent_night">#0280FF</color>
+    <color name="primaryTextColor_night">#FFFFFF</color>
+    <color name="secondaryTextColor_night">#B3FFFFFF</color>
+    <color name="windowColor_night">#1F1F1F</color>
+    <color name="tabSelectedColor_night">#0280FF</color>
+    <color name="tabUnselectedColor_night">#B3FFFFFF</color>
+    <color name="navTabPressed_night">#FFF</color>
+    <color name="statusBarColor_night">#212121</color>
+    <color name="appBarColor_night">#212121</color>
+    <color name="backgroundColor_night">#303030</color>
+    <color name="cardDialogColor_night">#383838</color>
+    <color name="toastSnackBarColor_night">#FFF</color>
+
+    <!-- Others -->
+    <color name="colorRipple">#256DB432</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="red_500">#f44336</color>
+
+    <!-- COLOR For Rebuild -->
+    <color name="overlay_dark_10">#1A000000</color>
+    <color name="overlay_dark_20">#33000000</color>
+    <color name="overlay_dark_30">#4D000000</color>
+    <color name="overlay_dark_40">#66000000</color>
+    <color name="overlay_dark_50">#80000000</color>
+    <color name="overlay_dark_60">#99000000</color>
+    <color name="overlay_dark_70">#B3000000</color>
+    <color name="overlay_dark_80">#CC000000</color>
+    <color name="overlay_dark_90">#E6000000</color>
+
+    <color name="overlay_light_10">#1AFFFFFF</color>
+    <color name="overlay_light_20">#33FFFFFF</color>
+    <color name="overlay_light_30">#4DFFFFFF</color>
+    <color name="overlay_light_40">#66FFFFFF</color>
+    <color name="overlay_light_50">#8FFFFFF0</color>
+    <color name="overlay_light_60">#99FFFFFF</color>
+    <color name="overlay_light_70">#B3FFFFFF</color>
+    <color name="overlay_light_80">#CCFFFFFF</color>
+    <color name="overlay_light_90">#E6FFFFFF</color>
+
+</resources>
