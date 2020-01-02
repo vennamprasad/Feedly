@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "388271774917",
+    "firebase_url": "https://feedly-604b3.firebaseio.com",
+    "project_id": "feedly-604b3",
+    "storage_bucket": "feedly-604b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388271774917:android:e2ddcd7962038be655e4ac",
+        "android_client_info": {
+          "package_name": "com.volksoftech.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388271774917-el6eeh0ic81nc6v6shu0b51e2e03gov9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.volksoftech.myapplication",
+            "certificate_hash": "df56114d5f3c69e15bf1c01d0883a5b47bb3a81a"
+          }
+        },
+        {
+          "client_id": "388271774917-54tacigrcgubp1lrb1m2fs70g2brpgnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGfW-nIGig-8OiQUcUgGvsj6kuK3B1OyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388271774917-54tacigrcgubp1lrb1m2fs70g2brpgnj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

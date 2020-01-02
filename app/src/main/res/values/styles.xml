@@ -18,105 +18,31 @@
         <item name="cardDialogColor">@color/cardDialogColor</item>
         <item name="toastSnackBarColor">@color/toastSnackBarColor</item>
         <item name="colorRipple">@color/colorRipple</item>
-
         <item name="colorControlHighlight">@color/overlay_dark_50</item> <!-- Ripple color -->
         <item name="android:windowBackground">@color/windowColor</item>
         <item name="android:fontFamily">@font/karla</item>
-        <!--<item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>-->
-        <item name="android:navigationBarColor">#000</item> <!-- Bottom nav bar color -->
-        <item name="android:windowContentTransitions">true</item> <!-- For view transition between activities -->
-        <item name="android:windowActivityTransitions">true</item>
-        <!--<item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>--> <!-- Activity transition -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:navigationBarColor">#000</item>
+        <!-- Bottom nav bar color -->
+        <item name="android:windowContentTransitions">false</item>
+        <!-- For view transition between activities -->
+        <!--        <item name="android:windowActivityTransitions">true</item>-->
+        <!--        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
     </style>
 
-    <!-- Dark Theme -->
-    <!-- Dark Theme -->
-    <style name="WallBox.Primary.Base.Dark" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary_night</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark_night</item>
-        <item name="colorAccent">@color/colorAccent_night</item>
-        <item name="primaryTextColor">@color/primaryTextColor_night</item>
-        <item name="secondaryTextColor">@color/secondaryTextColor_night</item>
-        <item name="tabSelectedColor">@color/tabSelectedColor_night</item>
-        <item name="tabUnselectedColor">@color/tabUnselectedColor_night</item>
-        <item name="navTabPressed">@color/navTabPressed_night</item>
-        <item name="statusBarColor">@color/statusBarColor_night</item>
-        <item name="appBarColor">@color/appBarColor_night</item>
-        <item name="backgroundColor">@color/backgroundColor_night</item>
-        <item name="cardDialogColor">@color/cardDialogColor_night</item>
-        <item name="toastSnackBarColor">@color/toastSnackBarColor_night</item>
-        <item name="colorRipple">@color/colorRipple</item>
-
-        <item name="colorControlHighlight">@color/overlay_light_50</item> <!-- Ripple color -->
-        <item name="android:windowBackground">@color/windowColor_night</item>
-        <item name="android:fontFamily">@font/karla</item>
-        <!--<item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>-->
-        <item name="android:navigationBarColor">#303030</item> <!-- Bottom nav bar color -->
-        <item name="android:windowContentTransitions">true</item> <!-- For view transition between activities -->
-        <item name="android:windowActivityTransitions">true</item>
-        <!--<item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>--> <!-- Activity transition -->
-    </style>
-    <!-- Text styles theme -->
-    <style name="TextAppearance.Subhead.Bold" parent="@style/TextAppearance.AppCompat.Subhead">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAppearance.Medium.Bold" parent="@style/TextAppearance.AppCompat.Medium">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAppearance.Large.Bold" parent="@style/TextAppearance.AppCompat.Large">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <!-- Window animation style -->
     <style name="WindowAnimationTransition">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
-    <!-- Photo preview theme -->
-    <style name="PhotoPreviewTheme">
-        <item name="android:windowIsFloating">false</item>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- Toolbar style -->
-    <style name="WallBoxToolbarTheme">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="titleTextAppearance">@style/TextAppearance.Large.Bold</item>
-        <item name="titleTextColor">?attr/primaryTextColor</item>
-        <item name="subtitleTextColor">?attr/secondaryTextColor</item>
-        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents</item>
-        <item name="android:theme">@style/ThemeOverlay.MaterialComponents</item>
-    </style>
+    <style name="MyApp.Primary.Base.Light.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <!-- Photo info bottom sheet style -->
-    <style name="BottomSheetTitleTheme">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/primaryTextColor_night</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="BottomSheetSubtitleTheme">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/secondaryTextColor_night</item>
-    </style>
-
-    <style name="BottomSheetIconTheme">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:tint">@color/secondaryTextColor_night</item>
-    </style>
-
-    <!-- Swipe refresh style -->
-    <style name="SwipeRefreshLayout">
-    </style>
+    <style name="MyApp.Primary.Base.Light.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
