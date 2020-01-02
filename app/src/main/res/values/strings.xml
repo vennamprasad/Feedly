@@ -26,5 +26,6 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="admob_app_id">ca-app-pub-5798395965775186~8938142200</string>
-    <string name="admob_ad_unit_id">ca-app-pub-5798395965775186~8938142200</string>
+    <string name="admob_ad_unit_id">ca-app-pub-5798395965775186/7710844532</string>
+    <string name="ad">Ad</string>
 </resources>

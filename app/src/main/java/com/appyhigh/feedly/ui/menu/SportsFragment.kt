@@ -62,7 +62,8 @@ class SportsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 recyclerView!!,
                 object : RecyclerTouchListener.ClickListener {
                     override fun onClick(view: View?, position: Int) {
-                        val news = newsArrayList[position]
+                        val anyObj: Any = newsArrayList[position]
+                        val news: News = anyObj as News
                         val title_Intent = Intent(activity, WebViewActivity::class.java)
                         title_Intent.putExtra("url", news.url)
                         startActivity(title_Intent)

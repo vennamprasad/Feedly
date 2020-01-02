@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "388271774917-46c0dq4qseliddrkr6lpsqh1349vcbqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.volksoftech.myapplication",
+            "certificate_hash": "93fc3709ed88ad268935b088cf596275d03c8ba1"
+          }
+        },
+        {
           "client_id": "388271774917-el6eeh0ic81nc6v6shu0b51e2e03gov9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

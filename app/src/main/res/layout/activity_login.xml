@@ -76,9 +76,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/skip"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20sp"
         android:layout_below="@+id/ll_view"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_centerInParent="true"
         android:text="@string/skip" />
 

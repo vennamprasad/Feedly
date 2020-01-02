@@ -27,6 +27,7 @@ import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private var newsArrayList: ArrayList<News> = ArrayList()
@@ -65,7 +66,8 @@ class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 recyclerView!!,
                 object : RecyclerTouchListener.ClickListener {
                     override fun onClick(view: View?, position: Int) {
-                        val news = newsArrayList[position]
+                        val anyObj: Any = newsArrayList[position]
+                        val news: News = anyObj as News
                         val title_Intent = Intent(activity, WebViewActivity::class.java)
                         title_Intent.putExtra("url", news.url)
                         startActivity(title_Intent)
@@ -118,5 +120,4 @@ class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         swipeRefreshLayout.isRefreshing = true
         loadJSON()
     }
-
 }

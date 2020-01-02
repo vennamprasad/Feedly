@@ -3,6 +3,7 @@ package com.appyhigh.feedly.ui.menu
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.provider.UserDictionary.Words.APP_ID
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,17 +13,22 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.appyhigh.feedly.*
+import com.appyhigh.feedly.API_KEY
+import com.appyhigh.feedly.CATEGORY_TECHNOLOGY
+import com.appyhigh.feedly.R
+import com.appyhigh.feedly.checkConnection
 import com.appyhigh.feedly.data.model.News
 import com.appyhigh.feedly.data.model.NewsResource
 import com.appyhigh.feedly.retrofit.ApiClient
 import com.appyhigh.feedly.ui.adapter.NewsAdapter
 import com.appyhigh.feedly.ui.web.WebViewActivity
+import com.google.android.gms.ads.MobileAds
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class TechnologyFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
@@ -62,7 +68,8 @@ class TechnologyFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 recyclerView!!,
                 object : RecyclerTouchListener.ClickListener {
                     override fun onClick(view: View?, position: Int) {
-                        val news = newsArrayList[position]
+                        val anyObj: Any = newsArrayList[position]
+                        val news: News = anyObj as News
                         val title_Intent = Intent(activity, WebViewActivity::class.java)
                         title_Intent.putExtra("url", news.url)
                         startActivity(title_Intent)

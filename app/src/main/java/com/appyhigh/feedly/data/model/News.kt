@@ -1,5 +1,6 @@
 package com.appyhigh.feedly.data.model
 
+import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
@@ -30,4 +31,6 @@ class News {
     @SerializedName("content")
     @Expose
     val content: String = ""
+
+    var nativeAd:UnifiedNativeAd?=null
 }
