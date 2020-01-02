@@ -60,4 +60,7 @@
     <color name="overlay_light_80">#CCFFFFFF</color>
     <color name="overlay_light_90">#E6FFFFFF</color>
 
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorRed">#f44336</color>
+    <color name="colorOrange">#FF9800</color>
 </resources>
