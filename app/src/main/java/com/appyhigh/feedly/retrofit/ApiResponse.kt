@@ -24,4 +24,6 @@ interface ApiResponse {
         @Query("category") category: String?,
         @Query("apiKey") apiKey: String?
     ): Call<NewsResource?>?
+
+
 }

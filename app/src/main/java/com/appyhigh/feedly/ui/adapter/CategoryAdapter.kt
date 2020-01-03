@@ -14,7 +14,7 @@ class CategoryAdapter(context: Context, fm: FragmentManager) :
     var mContext: Context? = context;
     //fragments
     override fun getItem(position: Int): Fragment {
-        var fragment: Fragment? = null
+        val fragment: Fragment
         when (position) {
             0 -> fragment = Top_HeadlinesFragment()
             1 -> fragment = WorldFragment()
@@ -24,9 +24,10 @@ class CategoryAdapter(context: Context, fm: FragmentManager) :
             5 -> fragment = SportsFragment()
             6 -> fragment = EntertainmentFragment()
             else -> {
+                fragment = Top_HeadlinesFragment()
             }
         }
-        return fragment!!
+        return fragment
     }
 
     override fun getCount(): Int {

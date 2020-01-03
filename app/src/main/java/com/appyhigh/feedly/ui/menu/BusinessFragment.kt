@@ -6,33 +6,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.appyhigh.feedly.API_KEY
-import com.appyhigh.feedly.CATEGORY_BUSINESS
-import com.appyhigh.feedly.R
-import com.appyhigh.feedly.checkConnection
+import com.appyhigh.feedly.*
 import com.appyhigh.feedly.data.model.News
 import com.appyhigh.feedly.data.model.NewsResource
 import com.appyhigh.feedly.retrofit.ApiClient
 import com.appyhigh.feedly.ui.adapter.NewsAdapter
 import com.appyhigh.feedly.ui.web.WebViewActivity
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.formats.UnifiedNativeAd
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    private var newsArrayList: ArrayList<News> = ArrayList()
+    private var newsArrayList: java.util.ArrayList<News> = java.util.ArrayList()
     private var mAdapter: NewsAdapter? = null
     private var recyclerView: RecyclerView? = null
+    // List of native ads that have been successfully loaded.
+    private val mNativeAds: java.util.ArrayList<UnifiedNativeAd> = java.util.ArrayList()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,8 +52,10 @@ class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             R.color.colorRed,
             R.color.colorOrange
         )
-        loadJSON()
+        // Initialize the Google Mobile Ads SDK
+        MobileAds.initialize(activity, getString(R.string.admob_app_id))
         recyclerView = view.findViewById(R.id.recyclerView)
+        loadJSON()
         val mLayoutManager: RecyclerView.LayoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recyclerView!!.layoutManager = mLayoutManager
@@ -66,26 +68,34 @@ class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 recyclerView!!,
                 object : RecyclerTouchListener.ClickListener {
                     override fun onClick(view: View?, position: Int) {
-                        val anyObj: Any = newsArrayList[position]
-                        val news: News = anyObj as News
-                        val title_Intent = Intent(activity, WebViewActivity::class.java)
-                        title_Intent.putExtra("url", news.url)
-                        startActivity(title_Intent)
+                        val news: News = newsArrayList[position]
+                        if (news.nativeAd == null) {
+                            val title_Intent = Intent(activity, WebViewActivity::class.java)
+                            title_Intent.putExtra("url", news.url)
+                            startActivity(title_Intent)
+                        }
                     }
 
                     override fun onLongClick(view: View?, position: Int) {}
                 })
         )
+
+    }
+
+
+    override fun onRefresh() {
+        loadJSON()
     }
 
     @SuppressLint("DefaultLocale")
     private fun loadJSON() {
         swipeRefreshLayout.isRefreshing = true
-        if (checkConnection(context)) {
+        if (checkConnection(activity)) {
             val request = ApiClient.apiService
             val call: Call<NewsResource?>? = request.getCategoryOfHeadlines(
                 Locale.getDefault().country.toString().toLowerCase(),
-                CATEGORY_BUSINESS, API_KEY
+                CATEGORY_BUSINESS,
+                API_KEY
             )
             call?.enqueue(object : Callback<NewsResource?> {
                 override fun onResponse(
@@ -93,31 +103,36 @@ class BusinessFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     response: Response<NewsResource?>
                 ) {
                     if (response.isSuccessful && response.body()?.articles != null) {
-                        swipeRefreshLayout.isRefreshing = false
                         if (!newsArrayList.isEmpty()) {
                             newsArrayList.clear()
                         }
                         newsArrayList = response.body()!!.articles!!
                         mAdapter = NewsAdapter(newsArrayList)
-                        recyclerView!!.adapter = mAdapter
+                        if (!adStatus) {
+                            swipeRefreshLayout.isRefreshing = false
+                            recyclerView!!.adapter = mAdapter
+                        } else {
+                            loadNativeAds(
+                                activity,
+                                mNativeAds,
+                                newsArrayList,
+                                swipeRefreshLayout,
+                                mAdapter,
+                                recyclerView
+                            )
+                        }
                     }
                 }
 
                 override fun onFailure(call: Call<NewsResource?>?, t: Throwable?) {
                     swipeRefreshLayout.isRefreshing = false
-                    Toast.makeText(activity, "Something went wrong...", Toast.LENGTH_SHORT)
-                        .show()
+                    show_msg(activity, "Something went wrong...")
                 }
             })
+
         } else {
-            Toast.makeText(activity, "Internet connection not Available", Toast.LENGTH_SHORT)
-                .show()
+            show_msg(activity, "Internet connection not Available")
             swipeRefreshLayout.isRefreshing = false
         }
-    }
-
-    override fun onRefresh() {
-        swipeRefreshLayout.isRefreshing = true
-        loadJSON()
     }
 }

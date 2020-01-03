@@ -15,6 +15,13 @@
         android:background="@color/colorPrimary"
         app:tabMode="scrollable" />
 
+    <TextView
+        android:id="@+id/debug_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/waiting_for_onesignal" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

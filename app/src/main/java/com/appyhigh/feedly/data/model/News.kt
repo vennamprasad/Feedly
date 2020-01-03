@@ -4,6 +4,7 @@ import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 class News {
@@ -27,7 +28,7 @@ class News {
     val urlToImage: String = ""
     @SerializedName("publishedAt")
     @Expose
-    val publishedAt: String = ""
+    val publishedAt: Date? = null
     @SerializedName("content")
     @Expose
     val content: String = ""
