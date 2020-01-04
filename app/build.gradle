@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
-
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 29
@@ -20,7 +20,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
-                onesignal_app_id: 'PUT YOUR ONESIGNAL APP ID HERE',
+                onesignal_app_id:'c8d38ed0-fcaf-48ed-be67-1f8a4d380624',
                 // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]
@@ -63,4 +63,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     // OneSignal SDK
     implementation 'com.onesignal:OneSignal:[3.11.2, 3.99.99]'
+    // (Recommended) Add the Google Analytics dependency.
+    implementation 'com.google.firebase:firebase-analytics:17.2.1'
+
+    // Add the Firebase Crashlytics dependency.
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 }

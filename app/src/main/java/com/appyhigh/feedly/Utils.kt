@@ -1,6 +1,5 @@
 package com.appyhigh.feedly
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.widget.Toast
@@ -8,17 +7,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.appyhigh.feedly.data.model.News
-import com.appyhigh.feedly.data.model.NewsResource
-import com.appyhigh.feedly.retrofit.ApiClient
 import com.appyhigh.feedly.ui.adapter.NewsAdapter
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.google.android.gms.ads.formats.UnifiedNativeAd
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -77,33 +71,15 @@ fun loadNativeAds(
     mAdapter: NewsAdapter?,
     recyclerView: RecyclerView?
 ) {
-    var unitId: String? = ""
-    lateinit var adLoader: AdLoader
-    if (BuildConfig.DEBUG) {
+    try {
+        var unitId: String? = ""
+        lateinit var adLoader: AdLoader
         //test key
         unitId = "ca-app-pub-3940256099942544/2247696110"
-    } else {
-        if (activity != null) {
-            unitId = activity.getString(R.string.admob_ad_unit_id)
-        }
-    }
-    adLoader = AdLoader.Builder(activity, unitId)
-        .forUnifiedNativeAd { ad: UnifiedNativeAd ->
-            // Show the ad.
-            mNativeAds.add(ad)
-            if (!adLoader.isLoading) {
-                insertAdsInMenuItems(
-                    mNativeAds,
-                    newsArrayList,
-                    swipeRefreshLayout,
-                    mAdapter,
-                    recyclerView
-                )
-            }
-        }
-        .withAdListener(object : AdListener() {
-            override fun onAdFailedToLoad(errorCode: Int) {
-                // Handle the failure by logging, altering the UI, and so on.
+        adLoader = AdLoader.Builder(activity, unitId)
+            .forUnifiedNativeAd { ad: UnifiedNativeAd ->
+                // Show the ad.
+                mNativeAds.add(ad)
                 if (!adLoader.isLoading) {
                     insertAdsInMenuItems(
                         mNativeAds,
@@ -114,15 +90,31 @@ fun loadNativeAds(
                     )
                 }
             }
-        })
-        .withNativeAdOptions(
-            NativeAdOptions.Builder()
-                // Methods in the NativeAdOptions.Builder class can be
-                // used here to specify individual options settings.
-                .build()
-        )
-        .build()
-    adLoader.loadAds(AdRequest.Builder().build(), 5)
+            .withAdListener(object : AdListener() {
+                override fun onAdFailedToLoad(errorCode: Int) {
+                    // Handle the failure by logging, altering the UI, and so on.
+                    if (!adLoader.isLoading) {
+                        insertAdsInMenuItems(
+                            mNativeAds,
+                            newsArrayList,
+                            swipeRefreshLayout,
+                            mAdapter,
+                            recyclerView
+                        )
+                    }
+                }
+            })
+            .withNativeAdOptions(
+                NativeAdOptions.Builder()
+                    // Methods in the NativeAdOptions.Builder class can be
+                    // used here to specify individual options settings.
+                    .build()
+            )
+            .build()
+        adLoader.loadAds(AdRequest.Builder().build(), 5)
+    } catch (exception: Exception) {
+        exception.printStackTrace()
+    }
 }
 
 fun insertAdsInMenuItems(
@@ -132,19 +124,23 @@ fun insertAdsInMenuItems(
     mAdapter: NewsAdapter?,
     recyclerView: RecyclerView?
 ) {
-    if (mNativeAds.size <= 0) {
-        return
+    try {
+        if (mNativeAds.size <= 0) {
+            return
+        }
+        val offset: Int = (newsArrayList.size / mNativeAds.size) + 1
+        var index = 0
+        for (ad: UnifiedNativeAd in mNativeAds) {
+            val news = News()
+            news.nativeAd = ad
+            newsArrayList.add(index, news)
+            index = index + offset
+        }
+        swipeRefreshLayout.isRefreshing = false
+        recyclerView!!.adapter = mAdapter
+    } catch (e: Exception) {
+        e.printStackTrace()
     }
-    val offset: Int = (newsArrayList.size / mNativeAds.size) + 1
-    var index = 0
-    for (ad: UnifiedNativeAd in mNativeAds) {
-        val news = News()
-        news.nativeAd = ad
-        newsArrayList.add(index, news)
-        index = index + offset
-    }
-    swipeRefreshLayout.isRefreshing = false
-    recyclerView!!.adapter = mAdapter
 }
 
 fun show_msg(context: Context?, message: String) {

@@ -29,4 +29,5 @@
     <string name="admob_ad_unit_id">ca-app-pub-5798395965775186/7710844532</string>
     <string name="ad">Ad</string>
     <string name="waiting_for_onesignal">Waiting for OneSignal...</string>
+    <string name="skip_login"><![CDATA[Skip Login >>]]></string>
 </resources>
