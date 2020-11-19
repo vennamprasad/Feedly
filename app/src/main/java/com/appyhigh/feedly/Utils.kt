@@ -20,7 +20,7 @@ import java.util.*
 const val BASE_URL = "https://newsapi.org/v2/"
 
 //API Key
-const val API_KEY = "15b744f890084f54b6f1141cf2e12e84"
+const val API_KEY = ""//your api key
 
 const val SOURCES =
     "Pinkvilla.com,Ndtv.com,Moneycontrol.com,The Times of India,Morungexpress.com,Indiablooms.com,Hindustantimes.com,Metro.co.uk,Deccanherald.com,Koimoi.com," +
