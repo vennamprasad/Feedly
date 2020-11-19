@@ -30,4 +30,5 @@
     <string name="ad">Ad</string>
     <string name="waiting_for_onesignal">Waiting for OneSignal...</string>
     <string name="skip_login"><![CDATA[Skip Login >>]]></string>
+    <string name="key">15b744f890084f54b6f1141cf2e12e84</string>
 </resources>
